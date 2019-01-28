@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { PostService } from 'src/app/services/post.service';
 export class ListPostComponent implements OnInit {
 
 	constructor(private postService : PostService) {}
-	
+
 	post: any[];
 
     ngOnInit() {

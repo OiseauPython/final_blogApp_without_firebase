@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { ListPostComponent } from './list-post/list-post.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { SinglePostComponent } from './single-post/single-post.component';
-import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
@@ -30,7 +29,6 @@ const appRoutes: Routes = [
         ListPostComponent,
         NewPostComponent,
         SinglePostComponent,
-        MenuBarComponent,
 		NavComponent,
 		FourOhFourComponent
     ],
