@@ -1,3 +1,22 @@
-<p>
-  single-post works!
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-10">
+            <h2>{{post.title}}</h2>
+            <div class="article">
+                <!--loop over the entire post array-->
+                <ul>
+                    <div class="d-flex w-100 justify-content-between">
+						<small>{{post.createAt | date: 'd/M/y hh:mm '}}</small>
+						<br />
+						<small>{{post.author}}</small>
+					</div>
+					<br />
+                    <p class="mb-1">{{post.article}}</p>
+                    <br />
+                    <small>Réactions : {{post.loveIt}}</small>
+                    <br />
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

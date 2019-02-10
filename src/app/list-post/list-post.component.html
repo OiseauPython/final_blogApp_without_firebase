@@ -1,41 +1,42 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-10">
-            <h2>Mes appareils</h2>
-
+            <h2>Articles</h2>
             <div class="article">
                 <!--loop over the entire post array-->
-                <ul *ngFor="let post of post">
+                <ul *ngFor="let post of post; let i = index">
                     <!--color selector with the like counter (0 like is neutral)-->
-                    <div class="list-group">
-                        <a [ngClass]="{
-							'list-group-item' : true,
-							'list-group-item-success' : post.loveIt >= 1,
-							'list-group-item-danger' : post.loveIt < 0
-						}" routerLink="[id]" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="list-group" [ngClass]="{
+						'list-group-item' : true,
+						'list-group-item-success' : post.loveIt >= 1,
+						'list-group-item-danger' : post.loveIt < 0
+					}">
+                        <a  (click)="onViewPost(i)" class="list-group-item list-group-item-action flex-column align-items-start">
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1">{{post.title}}</h5>
-                                <small>{{post.createAt | date: 'd/M/y hh:mm '}}</small>
+                                <small>{{post.createAt | date: 'd/M/y HH:mm '}}</small>
                             </div>
                             <p class="mb-1">{{post.summary}}</p>
 							<small>{{post.author}}</small>
-							<br/>
-							<br/>
+							
+						</a>
+						<br/>
 							<small>On aime ou pas ? {{post.loveIt}}</small>
 							<br/>
-                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-success">
-                                    <input (click)="post.loveIt = post.loveIt + 1" type="radio" name="options" id="option1"
-                                        autocomplete="off"> +1
-                                </label>
-                                <label class="btn btn-danger">
-                                    <input (click)="post.loveIt = post.loveIt - 1" type="radio" name="options" id="option2"
-                                        autocomplete="off"> -1
-                                </label>
-                            </div>
-                        </a>
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">
+							<label class="btn btn-success">
+								<input (click)="post.loveIt = post.loveIt + 1" type="radio" name="options" id="option1"
+									autocomplete="off"> +1
+							</label>
+							<label class="btn btn-danger">
+								<input (click)="post.loveIt = post.loveIt - 1" type="radio" name="options" id="option2"
+									autocomplete="off"> -1
+							</label>
+						</div>
+						<button class="btn btn-default pull-right" (click)="onDeletePost(post)">
+							<span class="glyphicon glyphicon-minus"></span>
+						</button>
                     </div>
-
                 </ul>
             </div>
         </div>

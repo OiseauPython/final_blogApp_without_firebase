@@ -2,7 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSidenavModule, MatToolbarModule, MatButtonModule, MatIconModule, MatListModule, } from '@angular/material'
+import * as firebase from 'firebase';
+import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { ListPostComponent } from './list-post/list-post.component';
@@ -16,12 +20,13 @@ import { PostService } from './services/post.service';
 
 const appRoutes: Routes = [
 	{ path: 'listPost', component: ListPostComponent },
-	{ path: 'singlePost/:id', component: SinglePostComponent },
-	{ path: 'newPost', component: NewPostComponent },
+	{ path: 'post/:id', component: SinglePostComponent },
+	{ path: 'new', component: NewPostComponent },
 	{ path: '', component: ListPostComponent },
 	{ path: 'not-found', component: FourOhFourComponent },
 	{ path: '**', redirectTo: 'not-found' }
 ];
+
 
 @NgModule({
     declarations: [
@@ -33,10 +38,12 @@ const appRoutes: Routes = [
 		FourOhFourComponent
     ],
     imports: [
-        BrowserModule,
+        BrowserModule,FormsModule,
+        ReactiveFormsModule,
         BrowserAnimationsModule,
         MatSidenavModule,
-        LayoutModule,
+		LayoutModule,
+		HttpClientModule,
         MatToolbarModule,
         MatButtonModule,
         MatIconModule,
